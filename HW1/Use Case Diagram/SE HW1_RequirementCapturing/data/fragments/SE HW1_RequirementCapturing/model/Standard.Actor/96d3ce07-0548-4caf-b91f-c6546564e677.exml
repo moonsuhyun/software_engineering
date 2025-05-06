@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="문자 시스템" version="4">
+  <OBJECT>
+    <ID name="문자 시스템" mc="Standard.Actor" uid="96d3ce07-0548-4caf-b91f-c6546564e677"/>
+    <PID name="se hw1_requirementcapturing" mc="Standard.Package" uid="eeb48647-3f58-49bf-9453-100d1dafb3d1"/>
+    <ATTRIBUTES>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[문자 시스템]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>
