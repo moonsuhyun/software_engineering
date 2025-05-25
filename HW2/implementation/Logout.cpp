@@ -6,5 +6,5 @@
 
 Logout::Logout(ifstream &input_file, ofstream &output_file) : Control(input_file, output_file) {
     this->boundary = new LogoutUI(*this, input_file, output_file);
-    this->boundary->writeOutput(format("2.2. 로그아웃\n> {}\n", User::resetCurrentUser()));
+    this->boundary->writeOutput("2.2. 로그아웃\n> " + User::resetCurrentUser() + "\n");
 }

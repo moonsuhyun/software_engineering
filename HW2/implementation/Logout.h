@@ -6,6 +6,7 @@
 #define LOGOUT_H
 
 #include <fstream>
+
 #include "Control.h"
 #include "Boundary.h"
 #include "User.h"

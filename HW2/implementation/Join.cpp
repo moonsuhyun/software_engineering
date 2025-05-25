@@ -14,7 +14,7 @@ Join::Join(ifstream &input_file, ofstream &output_file) : Control(input_file, ou
 void Join::processJoin(string &id, string &password, string &phone) {
     User new_user = User(id, password, phone);
     User::addUser(new_user);
-    this->boundary->writeOutput(format("1.1. 회원가입\n> {} {} {}\n", id, password, phone));
+    this->boundary->writeOutput("1.1. 회원가입\n> " + id + " " + password + " " + phone + "\n");
 }
 
 void JoinUI::readInput() {

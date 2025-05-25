@@ -1,4 +1,6 @@
 #include <fstream>
+#include <filesystem>
+
 #include "AddBicycle.h"
 #include "Join.h"
 #include "Login.h"
@@ -33,7 +35,7 @@ void doTask() {
     int menu_level1 = 0;
     int menu_level2 = 0;
     bool is_exit = false;
-    Control* control;
+    Control* control = nullptr;
     while (!is_exit) {
         input_file >> menu_level1 >> menu_level2;
         switch (menu_level1) {

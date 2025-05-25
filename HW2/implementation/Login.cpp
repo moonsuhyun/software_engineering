@@ -11,7 +11,7 @@ Login::Login(ifstream &input_file, ofstream &output_file) : Control(input_file, 
 
 void Login::processLogin(string& id, string& password) {
     User::setCurrentUserById(id);
-    this->boundary->writeOutput(format("2.1. 로그인\n> {} {}\n", id, password));
+    this->boundary->writeOutput("2.1. 로그인\n> " + id + " " + password + "\n");
 }
 
 void LoginUI::readInput() {

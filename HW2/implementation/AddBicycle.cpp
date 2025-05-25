@@ -12,7 +12,7 @@ AddBicycle::AddBicycle(ifstream &input_file, ofstream &output_file) : Control(in
 void AddBicycle::processAddBicycle(string& id, string& name) {
     Bicycle new_bicycle = Bicycle(id, name);
     Bicycle::addBicycle(new_bicycle);
-    this->boundary->writeOutput(format("3.1. 자전거 등록\n> {} {}\n", id, name));
+    this->boundary->writeOutput("3.1. 자전거 등록\n> " + id + " " + name + "\n");
 }
 
 void AddBicycleUI::readInput() {

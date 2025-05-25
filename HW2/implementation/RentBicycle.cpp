@@ -15,7 +15,7 @@ void RentBicycle::processRentBicycle(string& id) {
     string name = bicycle.getName();
     bicycle.rentBicycle();
     User::getCurrentUser().addRentList(bicycle);
-    this->boundary->writeOutput(format("4.1. 자전거 대여\n> {} {}\n", id, name));
+    this->boundary->writeOutput("4.1. 자전거 대여\n> "+ id + " " + name + "\n");
 }
 
 void RentBicycleUI::readInput() {
