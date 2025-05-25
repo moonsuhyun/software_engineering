@@ -1,5 +1,5 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #ifndef ADDBICYCLE_H
@@ -14,18 +14,20 @@
 
 using namespace std;
 
+// 3.1. ÀÚÀü°Å µî·Ï use caseÀÇ control Å¬·¡½º Á¤ÀÇ
 class AddBicycle : public Control {
 public:
-    AddBicycle(ifstream& input_file, ofstream& output_file);
-    void processAddBicycle(string &id, string &name);
+    AddBicycle(ifstream& input_file, ofstream& output_file); // Control Å¬·¡½º °´Ã¼¸¦ »ı¼ºÇÏ°í Boundary °´Ã¼¸¦ È£ÃâÇÔ
+    void processAddBicycle(string& id, string& name);   // ÀÚÀü°Å µî·Ï ¿äÃ»À» Ã³¸®ÇÏ°í Ãâ·Â ³»¿ëÀ» boundary Å¬·¡½º¿¡ Àü´Ş
 };
 
+// 3.1. ÀÚÀü°Å µî·Ï use caseÀÇ boundary Å¬·¡½º Á¤ÀÇ
 class AddBicycleUI : public Boundary {
 public:
     AddBicycleUI(Control& control, ifstream& input_file, ofstream& output_file)
         : Boundary(control, input_file, output_file) {}
-    void readInput() override;
-    void requestAddBicycle(string &id, string &name);
+    void readInput() override;                          // ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²À¸·ÎºÎÅÍ »ç¿ëÀÚ ÀÔ·ÂÀ» °¡Á®¿È
+    void requestAddBicycle(string& id, string& name);   // Control Å¬·¡½º¿¡ ÀÚÀü°Å µî·Ï Ã³¸®¸¦ ¿äÃ»ÇÔ
 };
 
 #endif //ADDBICYCLE_H

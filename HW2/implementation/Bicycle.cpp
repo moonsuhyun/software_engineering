@@ -1,28 +1,58 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #include "Bicycle.h"
 
 vector<Bicycle> Bicycle::bicycle_list = vector<Bicycle>();
 
+/*
+* ÇÔ¼öÀÌ¸§: Bicycle::getId
+* ±â´É: ÇØ´ç ÀÚÀü°ÅÀÇ ¾ÆÀÌµğ¸¦ ¹İÈ¯
+* Àü´ŞÀÎÀÚ: ¾øÀ½
+* ¹İÈ¯°ª: string&: ÀÚÀü°Å °´Ã¼ ÀÎ½ºÅÏ½ºÀÇ id ¼Ó¼ºÀÇ ÂüÁ¶
+*/
 string& Bicycle::getId() {
     return this->id;
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: Bicycle::getName
+* ±â´É: ÇØ´ç ÀÚÀü°ÅÀÇ ÀÌ¸§À» ¹İÈ¯
+* Àü´ŞÀÎÀÚ: ¾øÀ½
+* ¹İÈ¯°ª: string&: ÀÚÀü°Å °´Ã¼ ÀÎ½ºÅÏ½ºÀÇ name ¼Ó¼ºÀÇ ÂüÁ¶
+*/
 string& Bicycle::getName() {
     return this->name;
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: Bicycle::rentBicycle
+* ±â´É: ÇØ´ç ÀÚÀü°Å¸¦ ´ë¿© ºÒ°¡´ÉÀ¸·Î ¼³Á¤
+* Àü´ŞÀÎÀÚ: ¾øÀ½
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void Bicycle::rentBicycle() {
     this->availability = false;
 }
 
-void Bicycle::addBicycle(Bicycle &bicycle) {
+/*
+* ÇÔ¼öÀÌ¸§: Bicycle::addBicycle
+* ±â´É: »õ·Î¿î ÀÚÀü°Å °´Ã¼ ÀÎ½ºÅÏ½º¸¦ bicycle_list¿¡ Ãß°¡
+* Àü´ŞÀÎÀÚ: Bicycle& bicycle: bicycle_list¿¡ »õ·Î Ãß°¡µÉ ÀÚÀü°Å °´Ã¼ ÀÎ½ºÅÏ½ºÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
+void Bicycle::addBicycle(Bicycle& bicycle) {
     bicycle_list.push_back(bicycle);
 }
 
-Bicycle& Bicycle::getBicycleById(string &id) {
+/*
+* ÇÔ¼öÀÌ¸§: Bicycle::getBicycleById
+* ±â´É: ÁÖ¾îÁø ¾ÆÀÌµğ¿Í ÀÏÄ¡ÇÏ´Â ÀÚÀü°Å °´Ã¼ ÀÎ½ºÅÏ½º¸¦ ¹İÈ¯
+* Àü´ŞÀÎÀÚ: string& id: °Ë»öÇÒ ÀÚÀü°Å ÀÎ½ºÅÏ½ºÀÇ ¾ÆÀÌµğÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: Bicycle&: ¾ÆÀÌµğ°¡ ÀÏÄ¡ÇÏ´Â ÀÚÀü°Å °´Ã¼ ÀÎ½ºÅÏ½ºÀÇ ÂüÁ¶
+*/
+Bicycle& Bicycle::getBicycleById(string& id) {
     for (auto& iter : bicycle_list) {
         if (iter.getId() == id) {
             return iter;

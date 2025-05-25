@@ -1,26 +1,55 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #include "Login.h"
 
-Login::Login(ifstream &input_file, ofstream &output_file) : Control(input_file, output_file) {
+/*
+* »ı¼ºÀÚ: Login::Login
+* ±â´É: Control Å¬·¡½º °´Ã¼¸¦ »ı¼ºÇÏ°í Boundary °´Ã¼¸¦ È£ÃâÇÔ
+* Àü´ŞÀÎÀÚ:
+*     ifstream& input_file: »ç¿ëÀÚ ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²
+*     ofstream& output_file: ½Ã½ºÅÛ Ãâ·Â ÆÄÀÏ ½ºÆ®¸²
+*/
+Login::Login(ifstream& input_file, ofstream& output_file) : Control(input_file, output_file) {
     this->boundary = new LoginUI(*this, input_file, output_file);
     this->boundary->readInput();
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: Login::processLogin
+* ±â´É: ·Î±×ÀÎ ¿äÃ»À» Ã³¸®ÇÏ°í Ãâ·Â ³»¿ëÀ» boundary Å¬·¡½º¿¡ Àü´Ş
+* Àü´ŞÀÎÀÚ:
+*     string& id: ·Î±×ÀÎÇÑ È¸¿øÀÇ ¾ÆÀÌµğ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+*     string& password: ·Î±×ÀÎÇÑ È¸¿øÀÇ ºñ¹Ğ¹øÈ£ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void Login::processLogin(string& id, string& password) {
     User::setCurrentUserById(id);
-    this->boundary->writeOutput("2.1. ë¡œê·¸ì¸\n> " + id + " " + password + "\n");
+    this->boundary->writeOutput("2.1. ·Î±×ÀÎ\n> " + id + " " + password + "\n");
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: LoginUI::readInput
+* ±â´É: ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²À¸·ÎºÎÅÍ »ç¿ëÀÚ ÀÔ·ÂÀ» °¡Á®¿È
+* Àü´ŞÀÎÀÚ: ¾øÀ½
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void LoginUI::readInput() {
     string id, password;
     input_file >> id >> password;
     this->requestLogin(id, password);
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: LoginUI::requestJoin
+* ±â´É: Control Å¬·¡½º¿¡ ·Î±×ÀÎ Ã³¸®¸¦ ¿äÃ»ÇÔ
+* Àü´ŞÀÎÀÚ:
+*     string& id: ·Î±×ÀÎÇÑ È¸¿øÀÇ ¾ÆÀÌµğ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+*     string& password: ·Î±×ÀÎÇÑ È¸¿øÀÇ ºñ¹Ğ¹øÈ£ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void LoginUI::requestLogin(string& id, string& password) {
-    auto &login = dynamic_cast<Login&>(this->control);
+    auto& login = dynamic_cast<Login&>(this->control);
     login.processLogin(id, password);
 }

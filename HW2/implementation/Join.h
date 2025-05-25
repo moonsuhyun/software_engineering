@@ -1,5 +1,5 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #ifndef JOIN_H
@@ -14,18 +14,21 @@
 
 using namespace std;
 
+// 1.1. È¸¿ø°¡ÀÔ use caseÀÇ control Å¬·¡½º Á¤ÀÇ
 class Join : public Control {
 public:
-    Join(ifstream& input_file, ofstream& output_file);
-    void processJoin(string& id, string& password, string& phone);
+    Join(ifstream& input_file, ofstream& output_file);              // Control Å¬·¡½º °´Ã¼¸¦ »ı¼ºÇÏ°í Boundary °´Ã¼¸¦ È£Ãâ
+    void processJoin(string& id, string& password, string& phone);  // È¸¿ø°¡ÀÔ ¿äÃ»À» Ã³¸®ÇÏ°í Ãâ·Â ³»¿ëÀ» boundary Å¬·¡½º¿¡ Àü´Ş
 };
 
+// 1.1. È¸¿ø°¡ÀÔ use caseÀÇ boundary Å¬·¡½º Á¤ÀÇ
 class JoinUI : public Boundary {
 public:
     JoinUI(Control& control, ifstream& input_file, ofstream& output_file)
-        : Boundary(control, input_file, output_file) {}
-    void readInput() override;
-    void requestJoin(string& id, string& password, string& phone);
+        : Boundary(control, input_file, output_file) {
+    }
+    void readInput() override;      // ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²À¸·ÎºÎÅÍ »ç¿ëÀÚÀÇ ÀÔ·ÂÀ» °¡Á®¿È
+    void requestJoin(string& id, string& password, string& phone);  // Control Å¬·¡½º¿¡ È¸¿ø°¡ÀÔ Ã³¸®¸¦ ¿äÃ»ÇÔ
 };
 
 

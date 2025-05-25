@@ -1,18 +1,10 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 23.
+// Created by ¹®¼öÇö on 25. 5. 23.
 //
 
 #include "Control.h"
-//
-// Control::Control(ofstream &output_file) : input_file(), output_file(output_file) {
-//     this->boundary = new Boundary<T>();
-// }
-//
-// Control:Control(ifstream& input_file, ofstream& output_file) : input_file(input_file), output_file(output_file) {
-//     this->boundary = new Boundary<T>(this);
-//     this->boundary.readInput();
-// }
-//
+
+// Control Å¬·¡½º ÀÎ½ºÅÏ½º°¡ ¼Ò¸ê µÉ ¶§ Boundary Å¬·¡½º ÀÎ½ºÅÏ½º ¸Ş¸ğ¸® ÇÒ´ç ÇØÁ¦
 Control::~Control() {
     delete this->boundary;
 }

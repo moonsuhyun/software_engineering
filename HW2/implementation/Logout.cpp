@@ -1,10 +1,17 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 24.
+// Created by ¹®¼öÇö on 25. 5. 24.
 //
 
 #include "Logout.h"
 
-Logout::Logout(ifstream &input_file, ofstream &output_file) : Control(input_file, output_file) {
+/*
+* »ı¼ºÀÚ: Logout::Logout
+* ±â´É: Control Å¬·¡½º °´Ã¼¸¦ »ı¼ºÇÏ°í ·Î±×¾Æ¿ô Ã³¸® ÈÄ boundary Å¬·¡½º¿¡ Ãâ·Â °ª Àü´Ş
+* Àü´ŞÀÎÀÚ:
+*     ifstream& input_file: »ç¿ëÀÚ ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²
+*     ofstream& output_file: ½Ã½ºÅÛ Ãâ·Â ÆÄÀÏ ½ºÆ®¸²
+*/
+Logout::Logout(ifstream& input_file, ofstream& output_file) : Control(input_file, output_file) {
     this->boundary = new LogoutUI(*this, input_file, output_file);
-    this->boundary->writeOutput("2.2. ë¡œê·¸ì•„ì›ƒ\n> " + User::resetCurrentUser() + "\n");
+    this->boundary->writeOutput("2.2. ·Î±×¾Æ¿ô\n> " + User::resetCurrentUser() + "\n");
 }

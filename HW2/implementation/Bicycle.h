@@ -1,5 +1,5 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #ifndef BICYCLE_H
@@ -10,19 +10,20 @@
 
 using namespace std;
 
+// ÀÚÀü°Å Á¤º¸ ÀúÀåÀ» À§ÇÑ Bicycle Å¬·¡½º Á¤ÀÇ
 class Bicycle {
 private:
-    string id;
-    string name;
-    bool availability;
-    static vector<Bicycle> bicycle_list;
+    string id;                              // ¾ÆÀÌµğ
+    string name;                            // ÀÌ¸§
+    bool availability;                      // Áßº¹ ´ë¿© ¹æÁö¸¦ À§ÇÑ ´ë¿© °¡´É ¿©ºÎ
+    static vector<Bicycle> bicycle_list;    // µî·ÏµÈ ÀÚÀü°ÅµéÀÇ °´Ã¼ ÀÎ½ºÅÏ½º¸¦ ÀúÀå
 public:
     Bicycle(string& id, string& name) : id(id), name(name), availability(true) {};
-    string& getId();
-    string& getName();
-    void rentBicycle();
-    static void addBicycle(Bicycle& bicycle);
-    static Bicycle& getBicycleById(string& id);
+    string& getId();                            // ÇØ´ç ÀÚÀü°ÅÀÇ ¾ÆÀÌµğ¸¦ ¹İÈ¯
+    string& getName();                          // ÇØ´ç ÀÚÀü°ÅÀÇ ÀÌ¸§À» ¹İÈ¯
+    void rentBicycle();                         // ÇØ´ç ÀÚÀü°Å¸¦ ´ë¿© ºÒ°¡´ÉÀ¸·Î ¼³Á¤
+    static void addBicycle(Bicycle& bicycle);   // »õ·Î¿î ÀÚÀü°Å °´Ã¼ ÀÎ½ºÅÏ½º¸¦ bicycle_list¿¡ Ãß°¡
+    static Bicycle& getBicycleById(string& id); // ÁÖ¾îÁø ¾ÆÀÌµğ¿Í ÀÏÄ¡ÇÏ´Â ÀÚÀü°Å °´Ã¼ ÀÎ½ºÅÏ½º¸¦ ¹İÈ¯
 };
 
 #endif //BICYCLE_H

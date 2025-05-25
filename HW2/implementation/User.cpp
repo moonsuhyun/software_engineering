@@ -1,5 +1,5 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #include "User.h"
@@ -7,44 +7,92 @@
 User* User::current_user = nullptr;
 vector<User> User::user_list = vector<User>();
 
+/*
+* ÇÔ¼öÀÌ¸§: User::getId
+* ±â´É: ÇØ´ç »ç¿ëÀÚÀÇ ¾ÆÀÌµğ¸¦ ¹İÈ¯
+* Àü´ŞÀÎÀÚ: ¾øÀ½
+* ¹İÈ¯°ª: string&: »ç¿ëÀÚ °´Ã¼ ÀÎ½ºÅÏ½ºÀÇ id ¼Ó¼ºÀÇ ÂüÁ¶
+*/
 string& User::getId() {
     return this->id;
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: User::addRentList
+* ±â´É: ÇØ´ç »ç¿ëÀÚÀÇ ´ë¿© ¸ñ·Ï¿¡ »õ·Î¿î ÀÚÀü°Å¸¦ Ãß°¡
+* Àü´ŞÀÎÀÚ: Bicycle& bicycle: »ç¿ëÀÚ °´Ã¼ ÀÎ½ºÅÏ½ºÀÇ rent_list¿¡ Ãß°¡µÉ ÀÚÀü°Å °´Ã¼ ÀÎ½ºÅÏ½ºÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void User::addRentList(Bicycle& bicycle) {
     this->rent_list.add(bicycle);
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: User::getRentList
+* ±â´É: ÇØ´ç »ç¿ëÀÚ°¡ ´ë¿© ÁßÀÎ ÀÚÀü°ÅµéÀ» ¹İÈ¯
+* Àü´ŞÀÎÀÚ: ¾øÀ½
+* ¹İÈ¯°ª: vector<Bicycle>: »ç¿ëÀÚ °´Ã¼ ÀÎ½ºÅÏ½ºÀÇ rent_list¿¡ ÀúÀåµÈ Bicycle °´Ã¼µéÀÇ º¤ÅÍ
+*/
 vector<Bicycle> User::getRentList() {
     vector<Bicycle> rent_list;
-    for (auto &iter : this->rent_list) {
+    for (auto& iter : this->rent_list) {
         rent_list.push_back(iter);
     }
     return rent_list;
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: User::getCurrentUser
+* ±â´É: ÇöÀç Á¢¼ÓÁßÀÎ »ç¿ëÀÚ °´Ã¼ ÀÎ½ºÅÏ½º¸¦ ¹İÈ¯
+* Àü´ŞÀÎÀÚ: ¾øÀ½
+* ¹İÈ¯°ª: User&: ÇöÀç Á¢¼ÓÁßÀÎ »ç¿ëÀÚ °´Ã¼ ÀÎ½ºÅÏ½ºÀÇ ÂüÁ¶
+*/
 User& User::getCurrentUser() {
     return *current_user;
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: User::getRentList
+* ±â´É: ¾ÆÀÌµğ¸¦ ÅëÇØ ÇöÀç »ç¿ëÀÚÀÇ Æ÷ÀÎÅÍ¸¦ ¼³Á¤
+* Àü´ŞÀÎÀÚ: string& id: ÇöÀç Á¢¼ÓÁßÀÎ »ç¿ëÀÚ·Î ¼³Á¤ÇÒ ¾ÆÀÌµğ °ªÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void User::setCurrentUserById(string& id) {
-    for (auto &iter : user_list) {
+    for (auto& iter : user_list) {
         if (iter.getId() == id) {
             current_user = &iter;
         }
     }
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: User::resetCurrentUser
+* ±â´É: ÇöÀç »ç¿ëÀÚ¸¦ ³ªÅ¸³»´Â Æ÷ÀÎÅÍ¸¦ ÃÊ±âÈ­
+* Àü´ŞÀÎÀÚ: ¾øÀ½
+* ¹İÈ¯°ª: string: ·Î±×¾Æ¿ô Ã³¸® µÈ »ç¿ëÀÚÀÇ ¾ÆÀÌµğ
+*/
 string User::resetCurrentUser() {
     string id = current_user->getId();
     current_user = nullptr;
     return id;
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: User::addUser
+* ±â´É: »õ·Î¿î »ç¿ëÀÚ °´Ã¼ ÀÎ½ºÅÏ½º¸¦ user_list¿¡ Ãß°¡
+* Àü´ŞÀÎÀÚ: User& user: user_list¿¡ »õ·Î Ãß°¡ÇÒ »ç¿ëÀÚ °´Ã¼ ÀÎ½ºÅÏ½ºÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void User::addUser(User& user) {
     user_list.push_back(user);
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: User::registerAdmin
+* ±â´É: ÃÖÃÊ ½ÃÀÛ ½Ã °ü¸®ÀÚÀÇ Á¤º¸¸¦ user_list¿¡ Ãß°¡
+* Àü´ŞÀÎÀÚ: ¾øÀ½
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void User::registerAdmin() {
     string id = "admin";
     string password = "admin";

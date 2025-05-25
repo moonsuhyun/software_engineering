@@ -1,9 +1,15 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #include "Boundary.h"
 
+/*
+* ÇÔ¼öÀÌ¸§: Boundary::writeOutput
+* ±â´É: ½Ã½ºÅÛÀÇ Ãâ·ÂÀ» Ãâ·Â ÆÄÀÏ ½ºÆ®¸²À¸·Î Àü´Ş
+* Àü´ŞÀÎÀÚ: const string& output: ½Ã½ºÅÛÀÌ Ãâ·ÂÇÒ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void Boundary::writeOutput(const string& output) {
     output_file << output << endl;
 }

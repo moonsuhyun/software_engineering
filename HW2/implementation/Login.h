@@ -1,5 +1,5 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #ifndef LOGIN_H
@@ -14,18 +14,21 @@
 
 using namespace std;
 
+// 2.1. ·Î±×ÀÎ use caseÀÇ control Å¬·¡½º Á¤ÀÇ
 class Login : public Control {
 public:
-    Login(ifstream& input_file, ofstream& output_file);
-    void processLogin(string &id, string &password);
+    Login(ifstream& input_file, ofstream& output_file);     // control Å¬·¡½º °´Ã¼¸¦ »ı¼ºÇÏ°í boundary Å¬·¡½º È£Ãâ
+    void processLogin(string& id, string& password);        // ·Î±×ÀÎ ¿äÃ»À» Ã³¸®ÇÏ°í Ãâ·Â ³»¿ëÀ» boundary Å¬·¡½º¿¡ Àü´Ş
 };
 
+// 2.1. ·Î±×ÀÎ use caseÀÇ boundary Å¬·¡½º Á¤ÀÇ
 class LoginUI : public Boundary {
 public:
     LoginUI(Control& control, ifstream& input_file, ofstream& output_file)
-        : Boundary(control, input_file, output_file) {}
-    void readInput() override;
-    void requestLogin(string &id, string &password);
+        : Boundary(control, input_file, output_file) {
+    }
+    void readInput() override;                              // ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²À¸·ÎºÎÅÍ »ç¿ëÀÚ ÀÔ·ÂÀ» °¡Á®¿È
+    void requestLogin(string& id, string& password);        // Control Å¬·¡½º¿¡ ·Î±×ÀÎ Ã³¸®¸¦ ¿äÃ»ÇÔ
 };
 
 

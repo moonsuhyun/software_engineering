@@ -1,5 +1,5 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #ifndef USER_H
@@ -12,25 +12,27 @@
 
 using namespace std;
 
+// »ç¿ëÀÚ Á¤º¸ ÀúÀåÀ» À§ÇÑ User Å¬·¡½º Á¤ÀÇ
 class User {
 private:
-    string id;
-    string password;
-    string phone;
-    BicycleCollection rent_list;
-    static User *current_user;
-    static vector<User> user_list;
+    string id;                      // ¾ÆÀÌµğ
+    string password;                // ÆĞ½º¿öµå
+    string phone;                   // ÀüÈ­¹øÈ£
+    BicycleCollection rent_list;    // »ç¿ëÀÚ°¡ ´ë¿©ÁßÀÎ ÀÚÀü°Å ¸®½ºÆ®
+    static User* current_user;      // ÇöÀç »ç¿ëÀÚ¸¦ ³ªÅ¸³»´Â Æ÷ÀÎÅÍ
+    static vector<User> user_list;  // È¸¿ø°¡ÀÔ µÈ »ç¿ëÀÚµéÀÇ °´Ã¼ ÀÎ½ºÅÏ½º¸¦ ÀúÀå
 public:
     User(string& id, string& password, string& phone)
-        : id(id), password(password), phone(phone), rent_list(BicycleCollection()) {}
-    string& getId();
-    void addRentList(Bicycle& bicycle);
-    vector<Bicycle> getRentList();
-    static User& getCurrentUser();
-    static void setCurrentUserById(string& id);
-    static string resetCurrentUser();
-    static void addUser(User& user);
-    static void registerAdmin();
+        : id(id), password(password), phone(phone), rent_list(BicycleCollection()) {
+    }
+    string& getId();                            // ÇØ´ç »ç¿ëÀÚÀÇ ¾ÆÀÌµğ¸¦ ¹İÈ¯
+    void addRentList(Bicycle& bicycle);         // ÇØ´ç »ç¿ëÀÚÀÇ ´ë¿© ¸ñ·Ï¿¡ »õ·Î¿î ÀÚÀü°Å¸¦ Ãß°¡
+    vector<Bicycle> getRentList();              // ÇØ´ç »ç¿ëÀÚ°¡ ´ë¿© ÁßÀÎ ÀÚÀü°ÅµéÀ» ¹İÈ¯
+    static User& getCurrentUser();              // ÇöÀç Á¢¼Ó ÁßÀÎ »ç¿ëÀÚÀÇ °´Ã¼ ÀÎ½ºÅÏ½º¸¦ ¹İÈ¯
+    static void setCurrentUserById(string& id); // ¾ÆÀÌµğ¸¦ ÅëÇØ ÇöÀç »ç¿ëÀÚ Æ÷ÀÎÅÍ¸¦ ¼³Á¤
+    static string resetCurrentUser();           // ÇöÀç »ç¿ëÀÚ¸¦ ³ªÅ¸³»´Â Æ÷ÀÎÅÍ¸¦ ÃÊ±âÈ­
+    static void addUser(User& user);            // »õ·Î¿î »ç¿ëÀÚ °´Ã¼ ÀÎ½ºÅÏ½º¸¦ user_list¿¡ Ãß°¡
+    static void registerAdmin();                // ÃÖÃÊ ½ÃÀÛ ½Ã °ü¸®ÀÚÀÇ Á¤º¸¸¦ user_list¿¡ Ãß°¡
 };
 
 

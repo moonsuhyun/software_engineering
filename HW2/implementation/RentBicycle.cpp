@@ -1,29 +1,55 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #include "RentBicycle.h"
 
-
-RentBicycle::RentBicycle(ifstream &input_file, ofstream &output_file) : Control(input_file, output_file) {
+/*
+* »ı¼ºÀÚ: RentBicycle::RentBicycle
+* ±â´É: Control Å¬·¡½º °´Ã¼¸¦ »ı¼ºÇÏ°í Boundary °´Ã¼¸¦ È£ÃâÇÔ
+* Àü´ŞÀÎÀÚ:
+*     ifstream& input_file: »ç¿ëÀÚ ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²
+*     ofstream& output_file: ½Ã½ºÅÛ Ãâ·Â ÆÄÀÏ ½ºÆ®¸²
+*/
+RentBicycle::RentBicycle(ifstream& input_file, ofstream& output_file) : Control(input_file, output_file) {
     this->boundary = new RentBicycleUI(*this, input_file, output_file);
     this->boundary->readInput();
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: RentBicycle::processRentBicycle
+* ±â´É: ÀÚÀü°Å ´ë¿© ¿äÃ»À» Ã³¸®ÇÏ°í Ãâ·Â ³»¿ëÀ» boundary Å¬·¡½º¿¡ Àü´Ş
+* Àü´ŞÀÎÀÚ:
+*     string& id: ´ë¿©ÇÒ ÀÚÀü°ÅÀÇ ¾ÆÀÌµğ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void RentBicycle::processRentBicycle(string& id) {
     Bicycle& bicycle = Bicycle::getBicycleById(id);
     string name = bicycle.getName();
     bicycle.rentBicycle();
     User::getCurrentUser().addRentList(bicycle);
-    this->boundary->writeOutput("4.1. ìì „ê±° ëŒ€ì—¬\n> "+ id + " " + name + "\n");
+    this->boundary->writeOutput("4.1. ÀÚÀü°Å ´ë¿©\n> " + id + " " + name + "\n");
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: RentBicycleUI::readInput
+* ±â´É: ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²À¸·ÎºÎÅÍ »ç¿ëÀÚ ÀÔ·ÂÀ» °¡Á®¿È
+* Àü´ŞÀÎÀÚ: ¾øÀ½
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void RentBicycleUI::readInput() {
     string id;
     this->input_file >> id;
     this->requestRentBicycle(id);
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: RentBicycleUI::requestRentBicycle
+* ±â´É: Control Å¬·¡½º¿¡ ÀÚÀü°Å ´ë¿© Ã³¸®¸¦ ¿äÃ»ÇÔ
+* Àü´ŞÀÎÀÚ:
+*     string& id: ´ë¿©ÇÒ ÀÚÀü°ÅÀÇ ¾ÆÀÌµğ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void RentBicycleUI::requestRentBicycle(string& id) {
     auto& rent_bicycle = dynamic_cast<RentBicycle&>(this->control);
     rent_bicycle.processRentBicycle(id);

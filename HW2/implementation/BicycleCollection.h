@@ -1,5 +1,5 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 23.
+// Created by ¹®¼öÇö on 25. 5. 23.
 //
 
 #ifndef BICYCLECOLLECTION_H
@@ -10,14 +10,15 @@
 
 using namespace std;
 
+// °¢°¢ÀÇ »ç¿ëÀÚ°¡ ´ë¿©ÇÑ ÀÚÀü°ÅµéÀÇ ¸ñ·ÏÀ» ÀúÀåÇÏ´Â Collection Class Á¤ÀÇ
 class BicycleCollection {
 private:
-    vector<Bicycle> collection;
+    vector<Bicycle> collection;         // ÀÚÀü°Å °´Ã¼ ¿ÀºêÁ§Æ®µéÀ» ÀúÀåÇÑ º¤ÅÍ
 public:
     BicycleCollection() : collection(vector<Bicycle>()) {}
-    void add(Bicycle& bicycle);
-    vector<Bicycle>::iterator begin();
-    vector<Bicycle>::iterator end();
+    void add(Bicycle& bicycle);         // »õ·Î¿î ÀÚÀü°Å °´Ã¼ ÀÎ½ºÅÏ½º¸¦ collection¿¡ Ãß°¡
+    vector<Bicycle>::iterator begin();  // iterationÀ» À§ÇØ Ã¹¹øÂ° ÀÎ½ºÅÏ½º¸¦ °¡¸®Å°´Â ¹İº¹ÀÚ ¹İÈ¯
+    vector<Bicycle>::iterator end();    // iterationÀ» À§ÇØ ¸¶Áö¸· ÀÎ½ºÅÏ½º¸¦ °¡¸®Å°´Â ¹İº¹ÀÚ ¹İÈ¯
 };
 
 

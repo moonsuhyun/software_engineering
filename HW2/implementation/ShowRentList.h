@@ -1,5 +1,5 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #ifndef SHOWRENTLIST_H
@@ -13,15 +13,18 @@
 
 using namespace std;
 
+// 5.1. ÀÚÀü°Å ´ë¿© ¸®½ºÆ® use caseÀÇ control Å¬·¡½º Á¤ÀÇ
 class ShowRentList : public Control {
 public:
-    ShowRentList(ifstream &input_file, ofstream &output_file);
+    ShowRentList(ifstream& input_file, ofstream& output_file); // Control Å¬·¡½º °´Ã¼¸¦ »ı¼ºÇÏ°í ÀÚÀü°Å ´ë¿© ¸®½ºÆ® Á¶È¸ Ã³¸® ÈÄ boundary Å¬·¡½º¿¡ Ãâ·Â °ª Àü´Ş
 };
 
+// 5.1. ÀÚÀü°Å ´ë¿© ¸®½ºÆ® use caseÀÇ boundary Å¬·¡½º Á¤ÀÇ
 class ShowRentListUI : public Boundary {
 public:
     ShowRentListUI(Control& control, ifstream& input_stream, ofstream& output_file)
-        : Boundary(control, input_stream, output_file) {}
+        : Boundary(control, input_stream, output_file) {
+    }
 };
 
 #endif //SHOWRENTLIST_H

@@ -1,13 +1,20 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #include "ShowRentList.h"
 
+/*
+* »ý¼ºÀÚ: ShowRentList::ShowRentList
+* ±â´É: Control Å¬·¡½º °´Ã¼¸¦ »ý¼ºÇÏ°í ÀÚÀü°Å ´ë¿© ¸®½ºÆ® Á¶È¸ Ã³¸® ÈÄ boundary Å¬·¡½º¿¡ Ãâ·Â °ª Àü´Þ
+* Àü´ÞÀÎÀÚ:
+*     ifstream& input_file: »ç¿ëÀÚ ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²
+*     ofstream& output_file: ½Ã½ºÅÛ Ãâ·Â ÆÄÀÏ ½ºÆ®¸²
+*/
 ShowRentList::ShowRentList(ifstream& input_file, ofstream& output_file) : Control(input_file, output_file) {
     this->boundary = new ShowRentListUI(*this, input_file, output_file);
-    string output = "5.1. ìžì „ê±° ëŒ€ì—¬ ë¦¬ìŠ¤íŠ¸\n";
-    for (auto &iter : User::getCurrentUser().getRentList()) {
+    string output = "5.1. ÀÚÀü°Å ´ë¿© ¸®½ºÆ®\n";
+    for (auto& iter : User::getCurrentUser().getRentList()) {
         output += "> " + iter.getId() + " " + iter.getName() + "\n";
     }
     this->boundary->writeOutput(output);

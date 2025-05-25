@@ -1,17 +1,35 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 23.
+// Created by ¹®¼öÇö on 25. 5. 23.
 //
 
 #include "BicycleCollection.h"
 
-void BicycleCollection::add(Bicycle &bicycle) {
+/*
+* ÇÔ¼öÀÌ¸§: BicycleCollection::add
+* ±â´É: »õ·Î¿î ÀÚÀü°Å °´Ã¼ ÀÎ½ºÅÏ½º¸¦ collection¿¡ Ãß°¡
+* Àü´ŞÀÎÀÚ: Bicycle& bicycle: collection¿¡ Ãß°¡ÇÒ »õ·Î¿î ÀÚÀü°Å °´Ã¼ ÀÎ½ºÅÏ½ºÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
+void BicycleCollection::add(Bicycle& bicycle) {
     this->collection.push_back(bicycle);
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: BicycleCollection::begin
+* ±â´É: iterationÀ» À§ÇØ Ã¹¹øÂ° ÀÎ½ºÅÏ½º¸¦ °¡¸®Å°´Â ¹İº¹ÀÚ ¹İÈ¯
+* Àü´ŞÀÎÀÚ: vector<Bicycle>::iterator: Ã¹¹øÂ° ÀÎ½ºÅÏ½º¸¦ °¡¸®Å°´Â ¹İº¹ÀÚ
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 vector<Bicycle>::iterator BicycleCollection::begin() {
     return this->collection.begin();
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: BicycleCollection::begin
+* ±â´É: iterationÀ» À§ÇØ ¸¶Áö¸· ÀÎ½ºÅÏ½º¸¦ °¡¸®Å°´Â ¹İº¹ÀÚ ¹İÈ¯
+* Àü´ŞÀÎÀÚ: vector<Bicycle>::iterator: ¸¶Áö¸· ÀÎ½ºÅÏ½º¸¦ °¡¸®Å°´Â ¹İº¹ÀÚ
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 vector<Bicycle>::iterator BicycleCollection::end() {
     return this->collection.end();
 }

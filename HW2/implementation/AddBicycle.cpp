@@ -1,26 +1,55 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #include "AddBicycle.h"
 
-AddBicycle::AddBicycle(ifstream &input_file, ofstream &output_file) : Control(input_file, output_file) {
+/*
+* »ı¼ºÀÚ: AddBicycle::AddBicycle
+* ±â´É: Control Å¬·¡½º °´Ã¼¸¦ »ı¼ºÇÏ°í Boundary °´Ã¼¸¦ È£ÃâÇÔ
+* Àü´ŞÀÎÀÚ:
+*     ifstream& input_file: »ç¿ëÀÚ ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²
+*     ofstream& output_file: ½Ã½ºÅÛ Ãâ·Â ÆÄÀÏ ½ºÆ®¸²
+*/
+AddBicycle::AddBicycle(ifstream& input_file, ofstream& output_file) : Control(input_file, output_file) {
     this->boundary = new AddBicycleUI(*this, input_file, output_file);
     this->boundary->readInput();
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: AddBicycle::processAddBicycle
+* ±â´É: ÀÚÀü°Å µî·Ï ¿äÃ»À» Ã³¸®ÇÏ°í Ãâ·Â ³»¿ëÀ» boundary Å¬·¡½º¿¡ Àü´Ş
+* Àü´ŞÀÎÀÚ:
+*     string& id: »õ·Î µî·ÏÇÒ ÀÚÀü°ÅÀÇ ¾ÆÀÌµğ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+*     string& name: »õ·Î µî·ÏÇÒ ÀÚÀü°ÅÀÇ ÀÌ¸§ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void AddBicycle::processAddBicycle(string& id, string& name) {
     Bicycle new_bicycle = Bicycle(id, name);
     Bicycle::addBicycle(new_bicycle);
-    this->boundary->writeOutput("3.1. ìì „ê±° ë“±ë¡\n> " + id + " " + name + "\n");
+    this->boundary->writeOutput("3.1. ÀÚÀü°Å µî·Ï\n> " + id + " " + name + "\n");
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: AddBicycleUI::readInput
+* ±â´É: ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²À¸·ÎºÎÅÍ »ç¿ëÀÚ ÀÔ·ÂÀ» °¡Á®¿È
+* Àü´ŞÀÎÀÚ: ¾øÀ½
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void AddBicycleUI::readInput() {
     string id, name;
     this->input_file >> id >> name;
     this->requestAddBicycle(id, name);
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: AddBicycleUI::requestAddBicycle
+* ±â´É: Control Å¬·¡½º¿¡ ÀÚÀü°Å µî·Ï Ã³¸®¸¦ ¿äÃ»ÇÔ
+* Àü´ŞÀÎÀÚ:
+*     string& id: »õ·Î µî·ÏÇÒ ÀÚÀü°ÅÀÇ ¾ÆÀÌµğ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+*     string& name: »õ·Î µî·ÏÇÒ ÀÚÀü°ÅÀÇ ÀÌ¸§ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void AddBicycleUI::requestAddBicycle(string& id, string& name) {
     auto& add_bicycle = dynamic_cast<AddBicycle&>(this->control);
     add_bicycle.processAddBicycle(id, name);

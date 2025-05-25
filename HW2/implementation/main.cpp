@@ -11,8 +11,8 @@
 
 using namespace std;
 
-#define INPUT_FILE "/Users/moon/Documents/Studies/Undergrad/2025-1/software_engineering/HW2/implementation/input.txt"
-#define OUTPUT_FILE "/Users/moon/Documents/Studies/Undergrad/2025-1/software_engineering/HW2/implementation/output.txt"
+#define INPUT_FILE "C:/Mac/Home/Desktop/input.txt"
+#define OUTPUT_FILE "C:/Mac/Home/Desktop/output.txt"
 
 ifstream input_file;
 ofstream output_file;
@@ -31,72 +31,76 @@ int main() {
 }
 
 void doTask() {
+    // ÃÊ±â ½ÇÇà ½Ã °ü¸®ÀÚ Á¤º¸ µî·Ï
     User::registerAdmin();
+    // ¸Ş´º parsing ¹× ÇÁ·Î±×·¥ Á¾·á¸¦ À§ÇÑ Áö¿ª º¯¼ö
     int menu_level1 = 0;
     int menu_level2 = 0;
     bool is_exit = false;
+    ////
+    // Control Å¬·¡½ºÀÇ ÇÒ´ç, ¹İÈ¯À» À§ÇÑ Æ÷ÀÎÅÍ
     Control* control = nullptr;
     while (!is_exit) {
         input_file >> menu_level1 >> menu_level2;
         switch (menu_level1) {
+        case 1:
+            switch (menu_level2) {
             case 1:
-                switch (menu_level2) {
-                    case 1:
-                        // 1.1. íšŒì›ê°€ì…
-                        control = new Join(input_file, output_file);
-                    delete control;
-                    break;
-                }
+                // 1.1. È¸¿ø°¡ÀÔ
+                control = new Join(input_file, output_file);
+                delete control;
+                break;
+            }
             break;
+        case 2:
+            switch (menu_level2) {
+            case 1:
+                // 2.1. ·Î±×ÀÎ
+                control = new Login(input_file, output_file);
+                delete control;
+                break;
             case 2:
-                switch (menu_level2) {
-                    case 1:
-                        // 2.1. ë¡œê·¸ì¸
-                        control = new Login(input_file, output_file);
-                    delete control;
-                    break;
-                    case 2:
-                        // 2.2. ë¡œê·¸ì•„ì›ƒ
-                        control = new Logout(input_file, output_file);
-                    delete control;
-                    break;
-                }
+                // 2.2. ·Î±×¾Æ¿ô
+                control = new Logout(input_file, output_file);
+                delete control;
+                break;
+            }
             break;
-            case 3:
-                switch (menu_level2) {
-                    case 1:
-                        // 3.1. ìì „ê±° ë“±ë¡
-                        control = new AddBicycle(input_file, output_file);
-                    delete control;
-                    break;
-                }
+        case 3:
+            switch (menu_level2) {
+            case 1:
+                // 3.1. ÀÚÀü°Å µî·Ï
+                control = new AddBicycle(input_file, output_file);
+                delete control;
+                break;
+            }
             break;
-            case 4:
-                switch (menu_level2) {
-                    case 1:
-                        // 4.1. ìì „ê±° ëŒ€ì—¬
-                        control = new RentBicycle(input_file, output_file);
-                    delete control;
-                    break;
-                }
+        case 4:
+            switch (menu_level2) {
+            case 1:
+                // 4.1. ÀÚÀü°Å ´ë¿©
+                control = new RentBicycle(input_file, output_file);
+                delete control;
+                break;
+            }
             break;
-            case 5:
-                switch (menu_level2) {
-                    case 1:
-                        // 5.1. ìì „ê±° ëŒ€ì—¬ ë¦¬ìŠ¤íŠ¸
-                        control = new ShowRentList(input_file, output_file);
-                    delete control;
-                    break;
-                }
+        case 5:
+            switch (menu_level2) {
+            case 1:
+                // 5.1. ÀÚÀü°Å ´ë¿© ¸®½ºÆ®
+                control = new ShowRentList(input_file, output_file);
+                delete control;
+                break;
+            }
             break;
-            case 6:
-                switch (menu_level2) {
-                    case 1:
-                        // 6.1. ì¢…ë£Œ
-                        is_exit = true;
-                        output_file << "6.1. ì¢…ë£Œ";
-                    break;
-                }
+        case 6:
+            switch (menu_level2) {
+            case 1:
+                // 6.1. Á¾·á
+                is_exit = true;
+                output_file << "6.1. Á¾·á";
+                break;
+            }
             break;
         }
     }

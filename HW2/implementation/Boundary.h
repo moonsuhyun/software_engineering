@@ -1,5 +1,5 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #ifndef BOUNDARY_H
@@ -11,18 +11,20 @@
 class Control;
 using namespace std;
 
+// Use caseµéÀÇ Boundary Å¬·¡½ºÀÇ ÀÏ¹İÈ­ Á¤ÀÇ
 class Boundary {
 protected:
-    Control& control;
-    ifstream& input_file;
-    ofstream& output_file;
+    Control& control;           // ÇØ´ç Boundary Å¬·¡½º ÀÎ½ºÅÏ½º¸¦ »ı¼ºÇÑ Control Å¬·¡½ºÀÇ ÂüÁ¶
+    ifstream& input_file;       // »ç¿ëÀÚ ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²
+    ofstream& output_file;      // ½Ã½ºÅÛ Ãâ·Â ÆÄÀÏ ½ºÆ®¸²
 public:
     Boundary(Control& control, ifstream& input_file, ofstream& output_file)
-        : control(control), input_file(input_file), output_file(output_file) {}
+        : control(control), input_file(input_file), output_file(output_file) {
+    }
     virtual ~Boundary() = default;
 
-    virtual void readInput() {}
-    void writeOutput(const string& output);
+    virtual void readInput() {}                 // ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²À¸·ÎºÎÅÍ »ç¿ëÀÚ ÀÔ·ÂÀ» °¡Á®¿È
+    void writeOutput(const string& output);     // ½Ã½ºÅÛÀÇ Ãâ·ÂÀ» Ãâ·Â ÆÄÀÏ ½ºÆ®¸²À¸·Î Àü´Ş
 };
 
 #endif //BOUNDARY_H

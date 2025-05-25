@@ -1,28 +1,59 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #include "Join.h"
 
 using namespace std;
 
-Join::Join(ifstream &input_file, ofstream &output_file) : Control(input_file, output_file) {
+/*
+* »ı¼ºÀÚ: Join::Join
+* ±â´É: Control Å¬·¡½º °´Ã¼¸¦ »ı¼ºÇÏ°í Boundary °´Ã¼¸¦ È£ÃâÇÔ
+* Àü´ŞÀÎÀÚ:
+*     ifstream& input_file: »ç¿ëÀÚ ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²
+*     ofstream& output_file: ½Ã½ºÅÛ Ãâ·Â ÆÄÀÏ ½ºÆ®¸²
+*/
+Join::Join(ifstream& input_file, ofstream& output_file) : Control(input_file, output_file) {
     this->boundary = new JoinUI(*this, input_file, output_file);
     this->boundary->readInput();
 }
 
-void Join::processJoin(string &id, string &password, string &phone) {
+/*
+* ÇÔ¼öÀÌ¸§: Join::processJoin
+* ±â´É: È¸¿ø°¡ÀÔ ¿äÃ»À» Ã³¸®ÇÏ°í Ãâ·Â ³»¿ëÀ» boundary Å¬·¡½º¿¡ Àü´Ş
+* Àü´ŞÀÎÀÚ:
+*     string& id: »õ·Î °¡ÀÔÇÑ È¸¿øÀÇ ¾ÆÀÌµğ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+*     string& name: »õ·Î °¡ÀÔÇÑ È¸¿øÀÇ ÀÌ¸§ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+*     string& phone: »õ·Î °¡ÀÔÇÑ È¸¿øÀÇ ÀüÈ­¹øÈ£ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
+void Join::processJoin(string& id, string& password, string& phone) {
     User new_user = User(id, password, phone);
     User::addUser(new_user);
-    this->boundary->writeOutput("1.1. íšŒì›ê°€ì…\n> " + id + " " + password + " " + phone + "\n");
+    this->boundary->writeOutput("1.1. È¸¿ø°¡ÀÔ\n> " + id + " " + password + " " + phone + "\n");
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: JoinUI::readInput
+* ±â´É: ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²À¸·ÎºÎÅÍ »ç¿ëÀÚ ÀÔ·ÂÀ» °¡Á®¿È
+* Àü´ŞÀÎÀÚ: ¾øÀ½
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void JoinUI::readInput() {
     string id, password, phone;
     input_file >> id >> password >> phone;
     this->requestJoin(id, password, phone);
 }
 
+/*
+* ÇÔ¼öÀÌ¸§: JoinUI::requestJoin
+* ±â´É: Control Å¬·¡½º¿¡ È¸¿ø°¡ÀÔ Ã³¸®¸¦ ¿äÃ»ÇÔ
+* Àü´ŞÀÎÀÚ:
+*     string& id: »õ·Î °¡ÀÔÇÑ È¸¿øÀÇ ¾ÆÀÌµğ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+*     string& name: »õ·Î °¡ÀÔÇÑ È¸¿øÀÇ ÀÌ¸§ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+*     string& phone: »õ·Î °¡ÀÔÇÑ È¸¿øÀÇ ÀüÈ­¹øÈ£ ¹®ÀÚ¿­ÀÇ ÂüÁ¶
+* ¹İÈ¯°ª: ¾øÀ½
+*/
 void JoinUI::requestJoin(string& id, string& password, string& phone) {
     auto& join = dynamic_cast<Join&>(this->control);
     join.processJoin(id, password, phone);

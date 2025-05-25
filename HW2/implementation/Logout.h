@@ -1,5 +1,5 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 24.
+// Created by ¹®¼öÇö on 25. 5. 24.
 //
 
 #ifndef LOGOUT_H
@@ -13,12 +13,13 @@
 
 using namespace std;
 
-
+// 2.2. ·Î±×¾Æ¿ô use caseÀÇ control Å¬·¡½º Á¤ÀÇ
 class Logout : public Control {
 public:
-    Logout(ifstream& input_file, ofstream& output_file);
+    Logout(ifstream& input_file, ofstream& output_file);    // Control Å¬·¡½º °´Ã¼¸¦ »ý¼ºÇÏ°í ·Î±×¾Æ¿ô Ã³¸® ÈÄ boundary Å¬·¡½º¿¡ Ãâ·Â °ª Àü´Þ
 };
 
+// 2.2. ·Î±×¾Æ¿ô use caseÀÇ boundary Å¬·¡½º Á¤ÀÇ
 class LogoutUI : public Boundary {
 public:
     LogoutUI(Control& control, ifstream& input_file, ofstream& output_file)

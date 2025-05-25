@@ -1,5 +1,5 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 23.
+// Created by ¹®¼öÇö on 25. 5. 23.
 //
 
 #ifndef CONTROL_H
@@ -10,15 +10,17 @@
 
 using namespace std;
 
+// Use caseµéÀÇ Control Å¬·¡½ºÀÇ ÀÏ¹İÈ­ Á¤ÀÇ
 class Control {
 protected:
-    Boundary* boundary;
-    ifstream& input_file;
-    ofstream& output_file;
+    Boundary* boundary;         // ÇØ´ç Control Å¬·¡½º°¡ »ı¼ºÇÏ´Â Boundary Å¬·¡½º ÀÎ½ºÅÏ½ºÀÇ Æ÷ÀÎÅÍ
+    ifstream& input_file;       // »ç¿ëÀÚ ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²
+    ofstream& output_file;      // ½Ã½ºÅÛ Ãâ·Â ÆÄÀÏ ½ºÆ®¸²
 public:
     Control(ifstream& input_file, ofstream& output_file)
-        : input_file(input_file), output_file(output_file) {}
-    virtual ~Control();
+        : input_file(input_file), output_file(output_file) {
+    }
+    virtual ~Control();         // Control Å¬·¡½º ÀÎ½ºÅÏ½º°¡ ¼Ò¸ê µÉ ¶§ Boundary Å¬·¡½º ÀÎ½ºÅÏ½º ¸Ş¸ğ¸® ÇÒ´ç ÇØÁ¦
 };
 
 #endif //CONTROL_H

@@ -1,5 +1,5 @@
 //
-// Created by ë¬¸ìˆ˜í˜„ on 25. 5. 20.
+// Created by ¹®¼öÇö on 25. 5. 20.
 //
 
 #ifndef RENTBICYCLE_H
@@ -14,18 +14,21 @@
 
 using namespace std;
 
+// 4.1. ÀÚÀü°Å ´ë¿© use caseÀÇ control Å¬·¡½º Á¤ÀÇ
 class RentBicycle : public Control {
 public:
-    RentBicycle(ifstream &input_file, ofstream &output_file);
-    void processRentBicycle(string &id);
+    RentBicycle(ifstream& input_file, ofstream& output_file); // control Å¬·¡½º °´Ã¼¸¦ »ı¼ºÇÏ°í boundary Å¬·¡½º È£Ãâ
+    void processRentBicycle(string& id);    // ÀÚÀü°Å ´ë¿© ¿äÃ»À» Ã³¸®ÇÏ°í Ãâ·Â ³»¿ëÀ» boundary Å¬·¡½º¿¡ Àü´Ş
 };
 
+// 4.1. ÀÚÀü°Å ´ë¿© use caseÀÇ boundary Å¬·¡½º Á¤ÀÇ
 class RentBicycleUI : public Boundary {
 public:
-    RentBicycleUI(Control& control, ifstream &input_file, ofstream &output_file)
-        : Boundary(control, input_file, output_file) {}
-    void readInput() override;
-    void requestRentBicycle(string &id);
+    RentBicycleUI(Control& control, ifstream& input_file, ofstream& output_file)
+        : Boundary(control, input_file, output_file) {
+    }
+    void readInput() override;              // ÀÔ·Â ÆÄÀÏ ½ºÆ®¸²À¸·ÎºÎÅÍ »ç¿ëÀÚ ÀÔ·ÂÀ» °¡Á®¿È
+    void requestRentBicycle(string& id);    // Control Å¬·¡½º¿¡ ÀÚÀü°Å ´ë¿© Ã³¸®¸¦ ¿äÃ»ÇÔ
 };
 
 
