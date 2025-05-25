@@ -11,7 +11,7 @@ RentBicycle::RentBicycle(ifstream &input_file, ofstream &output_file) : Control(
 }
 
 void RentBicycle::processRentBicycle(string& id) {
-    Bicycle bicycle = Bicycle::getBicycleById(id);
+    Bicycle& bicycle = Bicycle::getBicycleById(id);
     string name = bicycle.getName();
     bicycle.rentBicycle();
     User::getCurrentUser().addRentList(bicycle);

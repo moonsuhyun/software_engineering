@@ -23,8 +23,8 @@ void Bicycle::addBicycle(Bicycle &bicycle) {
 }
 
 Bicycle& Bicycle::getBicycleById(string &id) {
-    for (auto &iter : bicycle_list) {
-        if (iter.getName() == id) {
+    for (auto& iter : bicycle_list) {
+        if (iter.getId() == id) {
             return iter;
         }
     }

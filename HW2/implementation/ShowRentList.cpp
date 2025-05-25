@@ -10,6 +10,5 @@ ShowRentList::ShowRentList(ifstream& input_file, ofstream& output_file) : Contro
     for (auto &iter : User::getCurrentUser().getRentList()) {
         output += format("> {} {}\n", iter.getId(), iter.getName());
     }
-    output += "\n";
     this->boundary->writeOutput(output);
 }
