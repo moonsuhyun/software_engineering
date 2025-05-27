@@ -1,7 +1,8 @@
 #include <fstream>
-#include <filesystem>
+
 
 #include "AddBicycle.h"
+#include "Exit.h"
 #include "Join.h"
 #include "Login.h"
 #include "Logout.h"
@@ -11,26 +12,26 @@
 
 using namespace std;
 
+// Absolute path 사용
 #define INPUT_FILE "C:/Mac/Home/Desktop/input.txt"
 #define OUTPUT_FILE "C:/Mac/Home/Desktop/output.txt"
 
-ifstream input_file;
-ofstream output_file;
-
-void doTask();
+void doTask(ifstream& input_file, ofstream& output_file);
 
 int main() {
+    ifstream input_file;
+    ofstream output_file;
     input_file.open(INPUT_FILE);
     output_file.open(OUTPUT_FILE);
 
-    doTask();
+    doTask(input_file, output_file);
 
     output_file.close();
     input_file.close();
     return 0;
 }
 
-void doTask() {
+void doTask(ifstream& input_file, ofstream& output_file) {
     // 초기 실행 시 관리자 정보 등록
     User::registerAdmin();
     // 메뉴 parsing 및 프로그램 종료를 위한 지역 변수
@@ -97,8 +98,8 @@ void doTask() {
             switch (menu_level2) {
             case 1:
                 // 6.1. 종료
-                is_exit = true;
-                output_file << "6.1. 종료";
+                control = new Exit(input_file, output_file, is_exit);
+                delete control;
                 break;
             }
             break;

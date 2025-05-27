@@ -10,6 +10,7 @@
 #include "Control.h"
 #include "Boundary.h"
 #include "User.h"
+#include "LogoutUI.h"
 
 using namespace std;
 
@@ -17,13 +18,6 @@ using namespace std;
 class Logout : public Control {
 public:
     Logout(ifstream& input_file, ofstream& output_file);    // Control 클래스 객체를 생성하고 로그아웃 처리 후 boundary 클래스에 출력 값 전달
-};
-
-// 2.2. 로그아웃 use case의 boundary 클래스 정의
-class LogoutUI : public Boundary {
-public:
-    LogoutUI(Control& control, ifstream& input_file, ofstream& output_file)
-        : Boundary(control, input_file, output_file) {}
 };
 
 #endif //LOGOUT_H
